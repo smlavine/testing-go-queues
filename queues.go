@@ -63,7 +63,7 @@ func main() {
 	var n int
 	rand.Seed(time.Now().UnixNano())
 
-	flag.IntVar(&n, "n", 10, "amount of iterations")
+	flag.IntVar(&n, "n", 1, "amount of iterations")
 	flag.Parse()
 
 	if len(flag.Args()) == 0 {
