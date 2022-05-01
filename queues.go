@@ -11,15 +11,14 @@ import (
 	"github.com/eapache/queue"
 )
 
-func listQueue(r bool) {
+func listQueue(n int, r bool) {
 	q := list.New()
-	q.PushBack(1)
-	q.PushBack(2)
-	q.PushBack(3)
-
-	n := 4
+	for i := 1; i <= n; i++ {
+		q.PushBack(i)
+	}
 
 	if r {
+		n++
 		for q.Len() > 0 {
 			elem := q.Remove(q.Front())
 			fmt.Printf("elem: %v\n", elem)
@@ -38,15 +37,14 @@ func listQueue(r bool) {
 	}
 }
 
-func sliceQueue(r bool) {
+func sliceQueue(n int, r bool) {
 	q := []int{}
-	q = append(q, 1)
-	q = append(q, 2)
-	q = append(q, 3)
-
-	n := 4
+	for i := 1; i <= n; i++ {
+		q = append(q, i)
+	}
 
 	if r {
+		n++
 		for len(q) > 0 {
 			elem := q[0]
 			fmt.Printf("elem: %v\n", elem)
@@ -68,15 +66,14 @@ func sliceQueue(r bool) {
 	}
 }
 
-func queueQueue(r bool) {
+func queueQueue(n int, r bool) {
 	q := queue.New()
-	q.Add(1)
-	q.Add(2)
-	q.Add(3)
-
-	n := 4
+	for i := 1; i <= n; i++ {
+		q.Add(i)
+	}
 
 	if r {
+		n++
 		for q.Length() > 0 {
 			elem := q.Remove()
 			fmt.Printf("elem: %v\n", elem)
@@ -95,38 +92,42 @@ func queueQueue(r bool) {
 	}
 }
 
-func run(s string, f func(bool), iterations int, r bool) {
+func run(s string, f func(int, bool), iterations int, n int, r bool) {
 	for i := 1; i <= iterations; i++ {
 		fmt.Printf("Start of %s-based queue (%d)\n", s, i)
-		f(r)
+		f(n, r)
 		fmt.Printf("End of %s-based queue (%d)\n", s, i)
 	}
 }
 
 func main() {
-	var iterations int
-	var r bool
+	var (
+		iterations int
+		n          int
+		r          bool
+	)
 	rand.Seed(time.Now().UnixNano())
 
 	flag.IntVar(&iterations, "i", 1, "amount of iterations")
+	flag.IntVar(&n, "n", 3, "amount of initial elements in the queue")
 	flag.BoolVar(&r, "r", false, "randomly insert elements during loop")
 	flag.Parse()
 
 	if len(flag.Args()) == 0 {
-		run("list", sliceQueue, iterations, r)
-		run("queue", queueQueue, iterations, r)
-		run("slice", sliceQueue, iterations, r)
+		run("list", sliceQueue, iterations, n, r)
+		run("queue", queueQueue, iterations, n, r)
+		run("slice", sliceQueue, iterations, n, r)
 		return
 	}
 
 	for _, arg := range flag.Args() {
 		switch arg {
 		case "list":
-			run(arg, listQueue, iterations, r)
+			run(arg, listQueue, iterations, n, r)
 		case "queue":
-			run(arg, queueQueue, iterations, r)
+			run(arg, queueQueue, iterations, n, r)
 		case "slice":
-			run(arg, sliceQueue, iterations, r)
+			run(arg, sliceQueue, iterations, n, r)
 		default:
 			log.Fatalf("bad argument %s\n", arg)
 		}
