@@ -8,8 +8,8 @@ function run()
 
 function bench()
 {
-	run $@ queue
 	run $@ list
+	run $@ queue
 	run $@ slice
 	echo '~~~~~~~~~~'
 }
