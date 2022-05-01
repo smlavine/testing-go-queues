@@ -109,7 +109,7 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 
 	flag.IntVar(&iterations, "i", 1, "amount of iterations")
-	flag.IntVar(&n, "n", 3, "amount of initial elements in the queue")
+	flag.IntVar(&n, "n", 10, "amount of initial elements in the queue")
 	flag.BoolVar(&r, "r", false, "randomly insert elements during loop")
 	flag.Parse()
 
