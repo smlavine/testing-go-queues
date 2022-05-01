@@ -27,3 +27,22 @@ bench -i 1000 -n 1000 -r
 
 bench -i 1000 -n 10000
 bench -i 1000 -n 10000 -r
+
+
+bench -n 1000
+bench -n 1000 -r
+
+bench -n 10000
+bench -n 10000 -r
+
+bench -n 100000
+bench -n 100000 -r
+
+bench -n 1000000
+bench -n 1000000 -r
+
+bench -n 10000000
+bench -n 10000000 -r
+
+bench -n 100000000
+bench -n 100000000 -r
