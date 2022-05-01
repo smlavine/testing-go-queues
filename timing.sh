@@ -8,9 +8,11 @@ function run()
 
 go build
 
+run queue
 run list
 run slice
 
+run -r queue
 run -r list
 run -r slice
 

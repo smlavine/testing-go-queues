@@ -7,6 +7,8 @@ import (
 	"log"
 	"math/rand"
 	"time"
+
+	"github.com/eapache/queue"
 )
 
 func listQueue(r bool) {
@@ -66,6 +68,33 @@ func sliceQueue(r bool) {
 	}
 }
 
+func queueQueue(r bool) {
+	q := queue.New()
+	q.Add(1)
+	q.Add(2)
+	q.Add(3)
+
+	n := 4
+
+	if r {
+		for q.Length() > 0 {
+			elem := q.Remove()
+			fmt.Printf("elem: %v\n", elem)
+
+			if rand.Intn(2) == 0 {
+				fmt.Printf("appending %v\n", n)
+				q.Add(n)
+				n++
+			}
+		}
+	} else {
+		for q.Length() > 0 {
+			elem := q.Remove()
+			fmt.Printf("elem: %v\n", elem)
+		}
+	}
+}
+
 func run(s string, f func(bool), n int, r bool) {
 	for i := 0; i < n; i++ {
 		fmt.Printf("Start of %s-based queue (%d)\n", s, i)
@@ -85,6 +114,7 @@ func main() {
 
 	if len(flag.Args()) == 0 {
 		run("list", sliceQueue, n, r)
+		run("queue", queueQueue, n, r)
 		run("slice", sliceQueue, n, r)
 		return
 	}
@@ -93,6 +123,8 @@ func main() {
 		switch arg {
 		case "list":
 			run(arg, listQueue, n, r)
+		case "queue":
+			run(arg, queueQueue, n, r)
 		case "slice":
 			run(arg, sliceQueue, n, r)
 		default:
