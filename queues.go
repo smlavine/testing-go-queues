@@ -38,7 +38,6 @@ func listQueue(r bool) {
 
 func sliceQueue(r bool) {
 	q := []int{}
-
 	q = append(q, 1)
 	q = append(q, 2)
 	q = append(q, 3)
