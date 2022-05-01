@@ -1,4 +1,4 @@
-module queues-test
+module git.sr.ht/~smlavine/testing-go-queues
 
 go 1.18
 

@@ -2,7 +2,7 @@
 
 function run()
 {
-	time ./queues-test -n 100000 $@ >/dev/null
+	time ./testing-go-queues -n 100000 $@ >/dev/null
 	echo "^^^^ $@"
 }
 
