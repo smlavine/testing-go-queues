@@ -10,58 +10,58 @@ import (
 )
 
 func sliceQueue(r bool) {
-	slice := []int{}
+	q := []int{}
 
-	slice = append(slice, 1)
-	slice = append(slice, 2)
-	slice = append(slice, 3)
+	q = append(q, 1)
+	q = append(q, 2)
+	q = append(q, 3)
 
 	n := 4
 
 	if r {
-		for len(slice) > 0 {
-			elem := slice[0]
+		for len(q) > 0 {
+			elem := q[0]
 			fmt.Printf("elem: %v\n", elem)
 
 			if rand.Intn(2) == 0 {
 				fmt.Printf("appending %v\n", n)
-				slice = append(slice, n)
+				q = append(q, n)
 				n++
 			}
 
-			slice = slice[1:]
+			q = q[1:]
 		}
 	} else {
-		for len(slice) > 0 {
-			elem := slice[0]
+		for len(q) > 0 {
+			elem := q[0]
 			fmt.Printf("elem: %v\n", elem)
-			slice = slice[1:]
+			q = q[1:]
 		}
 	}
 }
 
 func listQueue(r bool) {
-	queue := list.New()
-	queue.PushBack(1)
-	queue.PushBack(2)
-	queue.PushBack(3)
+	q := list.New()
+	q.PushBack(1)
+	q.PushBack(2)
+	q.PushBack(3)
 
 	n := 4
 
 	if r {
-		for queue.Len() > 0 {
-			elem := queue.Remove(queue.Front())
+		for q.Len() > 0 {
+			elem := q.Remove(q.Front())
 			fmt.Printf("elem: %v\n", elem)
 
 			if rand.Intn(2) == 0 {
 				fmt.Printf("appending %v\n", n)
-				queue.PushBack(n)
+				q.PushBack(n)
 				n++
 			}
 		}
 	} else {
-		for queue.Len() > 0 {
-			elem := queue.Remove(queue.Front())
+		for q.Len() > 0 {
+			elem := q.Remove(q.Front())
 			fmt.Printf("elem: %v\n", elem)
 		}
 	}
