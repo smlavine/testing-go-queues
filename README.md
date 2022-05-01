@@ -1,4 +1,8 @@
-# Condensed and formatted results of running ./record-results.sh:
+# Benchmark Results
+_See [raw-results.txt][raw-results] for the unformatted output of the
+benchmark tests._
+
+[raw-results]: https://git.sr.ht/~smlavine/testing-go-queues/tree/master/item/raw-results.txt
 
 <table>
 <tr><th colspan=2>n=10 (1000 iterations)</th></tr>
