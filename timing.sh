@@ -1,15 +1,16 @@
 #!/bin/bash
 
+function run()
+{
+	time ./queues-test -n 100000 $@ >/dev/null
+	echo "^^^^ $@"
+}
+
 go build
 
-echo "slice"
-time ./queues-test -n 100000 slice >/dev/null
+run list
+run slice
 
-echo "list"
-time ./queues-test -n 100000 list >/dev/null
+run -r list
+run -r slice
 
-echo "-r slice"
-time ./queues-test -n 100000 -r slice >/dev/null
-
-echo "-r list"
-time ./queues-test -n 100000 -r list >/dev/null
