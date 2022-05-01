@@ -95,8 +95,8 @@ func queueQueue(r bool) {
 	}
 }
 
-func run(s string, f func(bool), n int, r bool) {
-	for i := 0; i < n; i++ {
+func run(s string, f func(bool), iterations int, r bool) {
+	for i := 1; i <= iterations; i++ {
 		fmt.Printf("Start of %s-based queue (%d)\n", s, i)
 		f(r)
 		fmt.Printf("End of %s-based queue (%d)\n", s, i)
@@ -104,29 +104,29 @@ func run(s string, f func(bool), n int, r bool) {
 }
 
 func main() {
-	var n int
+	var iterations int
 	var r bool
 	rand.Seed(time.Now().UnixNano())
 
-	flag.IntVar(&n, "n", 1, "amount of iterations")
+	flag.IntVar(&iterations, "i", 1, "amount of iterations")
 	flag.BoolVar(&r, "r", false, "randomly insert elements during loop")
 	flag.Parse()
 
 	if len(flag.Args()) == 0 {
-		run("list", sliceQueue, n, r)
-		run("queue", queueQueue, n, r)
-		run("slice", sliceQueue, n, r)
+		run("list", sliceQueue, iterations, r)
+		run("queue", queueQueue, iterations, r)
+		run("slice", sliceQueue, iterations, r)
 		return
 	}
 
 	for _, arg := range flag.Args() {
 		switch arg {
 		case "list":
-			run(arg, listQueue, n, r)
+			run(arg, listQueue, iterations, r)
 		case "queue":
-			run(arg, queueQueue, n, r)
+			run(arg, queueQueue, iterations, r)
 		case "slice":
-			run(arg, sliceQueue, n, r)
+			run(arg, sliceQueue, iterations, r)
 		default:
 			log.Fatalf("bad argument %s\n", arg)
 		}
