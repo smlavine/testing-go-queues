@@ -6,13 +6,24 @@ function run()
 	echo "^^^^ $@"
 }
 
+function bench()
+{
+	run $@ queue
+	run $@ list
+	run $@ slice
+	echo '~~~~~~~~~~'
+}
+
 go build
 
-run queue
-run list
-run slice
+bench -n 10
+bench -n 10 -r
 
-run -r queue
-run -r list
-run -r slice
+bench -n 100
+bench -n 100 -r
 
+bench -n 1000
+bench -n 1000 -r
+
+bench -n 10000
+bench -n 10000 -r
