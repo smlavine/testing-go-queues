@@ -137,7 +137,7 @@ slice implementation using about 3GB.
 
 # Further research
 
-**TODO**.
+Buffered queues?
 
 ---
 
