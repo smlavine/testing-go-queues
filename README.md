@@ -1,3 +1,15 @@
+I've been getting more comfortable with using Go over the last month.
+For fun and practice, I had the idea to translate a Breadth-first
+search problem I had in one of my CS courses from C. For this I need a
+queue. My instinct was to jerry rig one from slices, and I began to do
+this, but I wondered whether there was anything else better out there.
+After looking into it, I decided to test the efficiency of three ways of
+doing queues:
+
+- Slices (pop with ```e := s[0]``` and ```s = s[1:]```, push with ```s = append(s, n)```)
+- A linked-list, using the ```container/list``` standard library module
+- The ring-buffer based [eapache/queue](https://github.com/eapache/queue)
+
 TL;DR: Use slices.
 
 # Benchmark Results
