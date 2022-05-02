@@ -1,3 +1,5 @@
+TL;DR: Use slices.
+
 # Benchmark Results
 _See [raw-results.txt][raw-results] for the unformatted output of the
 benchmark tests._
@@ -115,3 +117,31 @@ benchmark tests._
 <tr><td>queue</td><td>3m13.185s</td></tr>
 <tr><td><b>slice</b></td><td><b>3m6.901s</b></td></tr>
 </table>
+
+# Summary
+
+Across 16 tests:
+- Lists won zero 🏅, two 🥈 and fourteen 🥉
+- eapache's ring-buffer queue won four 🏅, ten 🥈 and two 🥉
+- Slices won thirteen 🏅, three 🥈 and zero 🥉
+
+I conclude that unless you know better, you should use slices as a FIFO
+queue in Go.
+
+In addition to these performance statistics, I noticed while running the
+tests that slices were the least resource-intensive (memory and CPU%),
+and lists were the most. On the final test with one hundred million
+initial elements and random insert, the list implementation used about 8
+GB of memory+swap, the ring-buffer implementation about 5-6GB, and the
+slice implementation using about 3GB.
+
+# Further research
+
+**TODO**.
+
+---
+
+If you have any criticism or feedback on this test, please send me an
+email at [~smlavine/public-inbox@lists.sr.ht][public-inbox].
+
+[public-inbox]: https://lists.sr.ht/~smlavine/public-inbox
