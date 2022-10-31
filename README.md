@@ -1,3 +1,5 @@
+# [testing-go-queues](https://sr.ht/~smlavine/testing-go-queues)
+
 I've been getting more comfortable with using Go over the last month.
 For fun and practice, I had the idea to translate a Breadth-first
 search problem I had in one of my CS courses from C. For this I need a
