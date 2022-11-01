@@ -8,8 +8,8 @@ this, but I wondered whether there was anything else better out there.
 After looking into it, I decided to test the efficiency of three ways of
 doing queues:
 
-- Slices (pop with ```e := s[0]``` and ```s = s[1:]```, push with ```s = append(s, n)```)
-- A linked-list, using the ```container/list``` standard library module
+- Slices (pop with `e := s[0]` and `s = s[1:]`, push with `s = append(s, n)`)
+- A linked-list, using the `container/list` standard library module
 - The ring-buffer based [eapache/queue](https://github.com/eapache/queue)
 
 TL;DR: Use slices.
