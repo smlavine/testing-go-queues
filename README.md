@@ -147,7 +147,7 @@ tests that slices were the least resource-intensive (memory and CPU%),
 and lists were the most. On the final test with one hundred million
 initial elements and random insert, the list implementation used about 8
 GB of memory+swap, the ring-buffer implementation about 5-6GB, and the
-slice implementation using about 3GB.
+slice implementation about 3GB.
 
 # Further research
 
