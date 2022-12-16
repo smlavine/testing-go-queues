@@ -4,8 +4,8 @@ import (
 	"container/list"
 	"flag"
 	"fmt"
-	"log"
 	"math/rand"
+	"os"
 	"time"
 
 	"github.com/eapache/queue"
@@ -129,7 +129,7 @@ func main() {
 		case "slice":
 			run(arg, sliceQueue, iterations, n, r)
 		default:
-			log.Fatalf("bad argument %s\n", arg)
+			fmt.Fprintln(os.Stderr, "skipping bad argument", arg)
 		}
 	}
 }
