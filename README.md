@@ -2,7 +2,8 @@
 
 I've been getting more comfortable with using Go over the last month.
 For fun and practice, I had the idea to translate a Breadth-first search
-problem I had in one of my CS courses from C (see [mazesolver][0]). For
+problem I had in one of my CS courses from C (see
+[mazesolver][mazesolver]). For
 this I need a queue. My instinct was to jerry rig one from slices, and I
 began to do this, but I wondered whether there was anything else better
 out there. After looking into it, I decided to test the efficiency of
